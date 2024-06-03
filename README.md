@@ -29,22 +29,22 @@ export PATH=$PATH:$JAVA_HOME\bin;
 java -version
 ```
 
-![alt text](image-11.png)
+![alt text](./images/image-11.png)
 
 ### Spring Initializr
 
 เราจะมาสร้าง Spring Boot Project ซึ่งสามารถทำได้หลายวิธี แต่วิธีที่ง่ายที่สุดคือใช้ [Spring Initializr](https://start.spring.io/) ซึ่งเป็นเว็บที่ใช้สำหรับสร้าง Project เริ่มต้นให้เรา ซึ่งจะมีให้เราเลือกว่าจะใช้ dependency อะไรบ้าง แล้วกด Generate เพียงเท่านี้เราก็ได้ Spring Boot project แล้ว ก็สามารถเลือกได้ว่าจะเป็น Maven หรือ Gradle project ใช้ภาษา Java หรือ Kotlin ก็ได้ แต่ในบทความนี้จะใช้ Maven project และเลือก dependency เป็น Web, JPA, MariaDB และ ​Lombok ดังนี้
 
-![alt text](image-3.png)
+![alt text](./images/image-3.png)
 
 
 ### Intellij
 เป็น tool สำหรับใช้พัฒนา Spring Boot Project โดยจะต้องเปิด unzip file ที่เพิ่ง download มาและจัดการตามตัวอย่างดังต่อไปนี้ หากยังไม่มีจะต้อง [Download Intellij](https://www.jetbrains.com/idea/download/)
 
-![alt text](image-1.png)
+![alt text](./images/image-1.png)
 เมื่อทำการเลือก Project from Existing Sources... จะมี pop up ขึ้นมาให้เราเลือกเป็น import project from external model และเลือกเป็น Maven และกด ​Create
 
-![alt text](image-2.png)
+![alt text](./images/image-2.png)
 
 ### Database
 ก่อนอื่นเรามาลง database กันก่อน สำหรับไว้ ​CRUD ข้อมูล ซึ่งในที่นี้เราจะสร้าง database mariadb server ด้วย docker ซึ่งถ้าเราไม่มี docker ให้เราทำการ [Download Docker Desktop](https://www.docker.com/products/docker-desktop/) ขึ้นมาก่อน เมื่อทำการ download และติดตั้งเรียบร้อยแล้ว ให้ทำการ start app ขึ้นมา หลังจาก start เรียบร้อยแล้วให้เราลองสร้าง folder จาก folder Document แล้วลองทำตามขั้นตอนดังนี้
@@ -417,11 +417,11 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
 หลังจากเราได้ลอง implement ครบทุกส่วนแล้ว ที่นี้เราจะมาลอง start application กัน 
 โดยให้เรากดที่ปุ่มสามเหลี่ยมด้านข้างที่คลาส `DemoApplication` และเลือก Run `DemoApplcation.main()` ระบบจะทำการ start application ขึ้นมาให้
-![alt text](image-9.png)
+![alt text](./images/image-9.png)
 
 ที่ console ด้านล่างจะแสดงข้อมูลต่างๆ ขิ้นมาประมาณนี้ เป็นอันว่าสามารถ start ได้เรียบร้อย
 
-![alt text](image-10.png)
+![alt text](./images/image-10.png)
 
 หรือลอง start ด้วยคำสั่งของ `maven` ด้วยคำสั่งดังต่อไปนี้
 ```
@@ -430,7 +430,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
 จากนี้เราจะทำการทดสอบเรียก API โดยจะใช้ Postman หากยังไม่มี [Download Postman](https://www.postman.com/downloads/) หากติดตั้งเรียบร้อยแล้วให้เราลองเรียกไปยัง endpoint `http://localhost:8080/api/books` HTTP POST เพื่อลองสร้างข้อมูล `Book` จาก Application ที่เราสร้างขึ้นมา
 
-![alt text](image-4.png)
+![alt text](./images/image-4.png)
 
 จากในรูปให้เราเพื่ม json request เข้าไปในส่วนของ Body ดังนี้
 ```json
@@ -449,14 +449,14 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 ```
 อีกตัวอย่างเป็นการร้องข้อมูล Book ทั้งหมดโดยเรียกไปยัง endpoint `http://localhost:8080/api/books` HTTP GET ระบบจะตอบกลับมาด้วย Http status 200 OK และได้ข้อมูล list ออกมา
 
-![alt text](image-5.png)
+![alt text](./images/image-5.png)
 
 อีกตัวอย่างเป็นการร้องข้อมูล Book ด้วย Id โดยเรียกไปยัง endpoint `http://localhost:8080/api/books/{id}` HTTP GET โดย `{id}` อันนี้เราจะแทนด้วย **1** ซึ่งเป็นข้อมูล Book ที่เราสร้างไปก่อนหน้านี้ ระบบจะตอบกลับข้อมูลกลับมา Http status 200 OK พร้อม Id กลับมาให้เรา
 
-![alt text](image-6.png)
+![alt text](./images/image-6.png)
 
 กรณีที่เราลองแทนค่า Id ด้วยเลขอื่นที่ยังไม่มีในระบบเมื่อทำการกด Send ระบบจะตอบกลับมาด้วย Http status 404 และตอบเป้น message กลับมาว่า `Book not found`
-![alt text](image-7.png)
+![alt text](./images/image-7.png)
 
 หลังจากนี้ให้ลอง CREATE เพิ่มเติมและลอง GET by title UPDATE และ DELETE ดูโดยใช้ HTTP METHOD ให้สัมพันธ์กับที่ระบุไว้ใน code
 
